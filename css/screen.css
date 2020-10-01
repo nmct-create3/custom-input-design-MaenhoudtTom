@@ -66,8 +66,10 @@
     --global-input-focus-borderColor: var(--global-color-alpha);
     --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
 
+    /* dark theme variables */
     --global-page-color: var(--color-neutral-xxxx-dark);
     --global-page-backgroundColor: var(--color-neutral-xxxx-light);
+    --global-input-backgroundColor-dark: var(--global-color-neutral-xxxx-dark);
 }
 
 /*------------------------------------*\
@@ -99,7 +101,6 @@ html {
 
     html {
         background-color: var(--global-color-neutral-xxxx-dark);
-        /* background-color: black; */
     }
 }
 
@@ -538,16 +539,24 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-xxxx-dark);
+    fill: var(--logo__path--1--fill, var(--global-color-neutral-xxxx-dark));
 }
 
 .c-logo__path--2 {
-    fill: var(--global-color-alpha);
+    fill: var(--logo__path--2--fill, var(--global-color-alpha));
 }
 
 .c-logo__path--3 {
-    fill: var(--color-alpha-x-dark);
+    fill: var(--logo__path--3--fill, var(--global-color-alpha-x-dark));
 }
+
+@media (prefers-color-scheme: dark) {
+    .c-logo {
+      --logo__path--1--fill: White;
+      --logo__path--2--fill: var(--logo__path--1--fill);
+      --logo__path--3--fill: var(--logo__path--1--fill);
+    }
+  }
 
 /*
     Component: Card
@@ -600,6 +609,17 @@ input::placeholder {
     }
 }
 
+@media (prefers-color-scheme: dark) {
+    .c-card {
+        background-color: var(--global-color-neutral-xxx-dark);
+    }
+
+    .c-card__footer {
+        text-align: center;
+        border-top: var(--global-borderWidth) solid var(--global-color-neutral-xxxx-dark);
+    }
+}
+
 /*
     Component: Forms
     ---
@@ -636,6 +656,13 @@ input::placeholder {
     outline: none;
     box-shadow: var(--shad);
     transition: border var(--global-transition-timing-alpha);
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-input {
+        background-color: var(--global-input-backgroundColor-dark);
+        /* border: var(var(--global-borderWidth) solid var(--global-input-borderColor-dark)); */
+    }
 }
 
 .c-input:hover {
@@ -731,6 +758,21 @@ input::placeholder {
     border-radius: 50%;
 }
 
+@media (prefers-color-scheme: dark) {
+    .c-custom-option__symbol {
+        fill: var(--global-color-neutral-xxxx-light);
+    }
+
+    .c-custom-option__fake-input {
+        background-color: var(--global-color-neutral-xxxx-dark);
+        border: none;
+    }
+
+    .c-option--hidden:checked + .c-custom-option .c-custom-option__fake-input {
+        border: none;
+    }
+}
+
 /*
     Component: Label
     ---
@@ -747,6 +789,12 @@ input::placeholder {
 
 .c-label--option {
     padding-bottom: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-label {
+        color: var(--global-color-neutral-x-light);
+    }
 }
 
 /*
