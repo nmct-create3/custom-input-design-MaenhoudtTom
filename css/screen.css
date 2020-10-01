@@ -660,6 +660,7 @@ input::placeholder {
 
 @media (prefers-color-scheme: dark) {
     .c-input {
+        color: var(--global-color-neutral-xxxx-light);
         background-color: var(--global-input-backgroundColor-dark);
         /* border: var(var(--global-borderWidth) solid var(--global-input-borderColor-dark)); */
     }
